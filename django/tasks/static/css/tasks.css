@@ -1,0 +1,28 @@
+#app {
+    padding: 0 5px;
+}
+
+.task-button {
+    padding: 10px;
+    margin-right: 10px;
+}
+.error {
+    padding: 5px;
+    color: red;
+}
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    /*border: 1px solid grey; */
+}
+
+.result-table td,
+.result-table th {
+    border: 2px solid grey;
+    padding: 5px;
+}
+
+.result-table th {
+    font-weight: 600;
+}

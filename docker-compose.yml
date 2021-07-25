@@ -1,0 +1,29 @@
+version: '3.7'
+
+services: 
+    web:
+        build: ./django
+        volumes: 
+            - ./django:/app
+        ports: 
+            - 8000:8000
+    celery:
+        build: ./django
+        command: celery worker --app=config --loglevel=info
+        volumes: 
+            - ./django:/app
+        depends_on: 
+            - web
+            - redis
+    
+    flower:
+        build: ./django
+        command: flower -A config --port=5555 --broker=redis://redis:6379
+        ports:
+            - 5555:5555
+        depends_on: 
+            - web
+            - celery
+            - redis
+    redis:
+        image: redis:alpine
